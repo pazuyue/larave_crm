@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ProcessPodcast;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +25,7 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::paginate(10);
+        ProcessPodcast::dispatch(Auth::user())->onQueue('ProcessPodcast');
         return view('users.index', compact('users'));
     }
 
