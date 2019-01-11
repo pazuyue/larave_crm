@@ -24,8 +24,13 @@ class SessionsController extends Controller
     {
         $credentials = $this->validate($request, [
             'email' => 'required|email|max:255',
-            'password' => 'required'
+            'password' => 'required',
+            'captcha' => 'required|captcha',
+        ],[
+            'captcha.required' => '验证码不能为空',
+            'captcha.captcha' => '请输入正确的验证码',
         ]);
+        unset($credentials['captcha']);
 
         if (Auth::attempt($credentials, $request->has('remember'))) {
             if(Auth::user()->activated) {
