@@ -6,6 +6,7 @@ use App\Jobs\ProcessPodcast;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class UsersController extends Controller
@@ -25,6 +26,7 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::paginate(10);
+        Log::info($users);
         ProcessPodcast::dispatch(Auth::user())->onQueue('ProcessPodcast');
         return view('users.index', compact('users'));
     }

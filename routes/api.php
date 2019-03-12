@@ -16,3 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get('/getOmsLog', 'Oms\OmsControlController@getOmsLog');//接收OMS日记
