@@ -15,7 +15,7 @@ use Monolog\Processor\WebProcessor;
 class OmsControlController extends Controller{
 
     public function getOmsLog(Request $request){
-        dd(new WebProcessor($_SERVER));
+
         $result=DB::connection('mongodb')       //选择使用mongodb
         ->collection($request->channel)           //选择使用的集合
         ->insert([                          //插入数据
