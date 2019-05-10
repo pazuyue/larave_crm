@@ -29,4 +29,8 @@ class SwooleHandle
     function onConnect($serv,$fd){
         echo '有新的客户端连接，连接标识为：'.$fd.PHP_EOL;
     }
+
+    function onClose($serv,$fd){
+        echo "client-{$fd} is closed\n";
+    }
 }

@@ -65,7 +65,7 @@ class Swoole extends Command
         $this->serv->on('Start', array($this->swoole_handle, 'onStart'));
         $this->serv->on('Connect', array($this->swoole_handle, 'onConnect'));
         $this->serv->on('Receive', array($this->swoole_handle, 'onReceive'));
-        //$this->serv->on('Close', array($this->swoole_handle, 'onClose'));
+        $this->serv->on('Close', array($this->swoole_handle, 'onClose'));
         $this->serv->start();
     }
 }
