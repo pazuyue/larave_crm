@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+
 use App\Handlers\SwooleHandle;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\App;
@@ -52,7 +53,7 @@ class Swoole extends Command
 
     private function start()
     {
-        $this->serv=new \swoole_server("127.0.0.1",9501);
+        $this->serv=new \swoole_server("0.0.0.0",9510);
         $this->serv->set(array(
             'worker_num' => 8,
             'daemonize' => false,
@@ -60,7 +61,7 @@ class Swoole extends Command
             'dispatch_mode' => 2,
             'debug_mode'=> 1
         ));
-        $this->swoole_handle = App::make(SwooleHandle::class);
+        $this->swoole_handle = App::make('swoole');
         $this->serv->on('Start', array($this->swoole_handle, 'onStart'));
         $this->serv->on('Connect', array($this->swoole_handle, 'onConnect'));
         $this->serv->on('Receive', array($this->swoole_handle, 'onReceive'));
