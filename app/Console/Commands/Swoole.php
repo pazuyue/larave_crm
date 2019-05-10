@@ -11,14 +11,14 @@ class Swoole extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'swoole {action}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Run Swoole';
 
     /**
      * Create a new command instance.
