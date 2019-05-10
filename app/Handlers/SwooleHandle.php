@@ -22,5 +22,11 @@ class SwooleHandle
         $serv->send($fd,$data."\r\n");
     }
 
+    function onStart($serv){
+        echo 'onStart';
+    }
 
+    function onConnect($serv,$fd){
+        echo '有新的客户端连接，连接标识为：'.$fd.PHP_EOL;
+    }
 }
