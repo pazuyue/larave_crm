@@ -14,30 +14,13 @@ class SwooleHandle
     {
 
     }
-    public function onOpen($serv, $request)
-    {
-        echo 'onOpen';
-    }
-
-    public function onStart($serv, $request){
-        echo 'onStart';
-    }
-
-    public function onConnect($serv, $request){
-        echo 'onConnect';
-    }
-
-    public function onReceive($serv, $request){
+    /**
+     * 数据接收回调
+     */
+    public function onReceive($serv, $fd, $from_id, $data){
         echo 'onReceive';
+        $serv->send($fd,$data."\r\n");
     }
 
-    public function onMessage($serv,$frame)
-    {
-        echo 'onMessage';
-    }
-    public function onClose($serv,$fd)
-    {
-        echo 'onClose';
-    }
 
 }
