@@ -18,6 +18,19 @@ class SwooleHandle
     {
         echo 'onOpen';
     }
+
+    public function onStart($serv, $request){
+        echo 'onStart';
+    }
+
+    public function onConnect($serv, $request){
+        echo 'onConnect';
+    }
+
+    public function onReceive($serv, $request){
+        echo 'onReceive';
+    }
+
     public function onMessage($serv,$frame)
     {
         echo 'onMessage';
