@@ -175,6 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\SessionsServiceProvider::class,
+        App\Providers\SwooleHandleServiceProvider::class
 
     ],
 
